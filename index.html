@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Vineyard — Lemoore, CA · Motion concept</title>
+<meta name="description" content="Concept preview (not the official site): scroll-driven motion design for The Vineyard restaurant, 819 East Bush Street, Lemoore, CA.">
+<meta name="theme-color" content="#07130d">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="banner">CONCEPT PREVIEW · not the official site · real info from thevineyardlemoore.com · <b>[Sample]</b> = placeholder</div>
+<div class="progress"><i id="bar"></i></div>
+
+<header class="nav">
+  <a href="#top" class="wordmark" aria-label="The Vineyard, Lemoore">The Vineyard<small>Lemoore</small></a>
+  <nav><a href="#build">The Burger</a><a href="#flame">Charbroiler</a><a href="#bar-sec">Bar</a><a href="#menu">Menu</a><a href="#visit">Visit</a><a class="pill" href="tel:+15599241988">559-924-1988</a></nav>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">819 East Bush Street · Lemoore, CA</p>
+    <h1><span class="script">where good friends</span><span class="cond">GREAT FOOD<br>MEETS <em>HERE.</em></span></h1>
+    <p class="lede">Breakfast, burgers, steaks &amp; a pull-up bar in the Crushed Grape Room. Scroll — we’ll build you a burger.</p>
+    <div class="cta"><a class="btn" href="#build">Watch it stack</a><a class="ghost" href="#menu">See the menu →</a></div>
+  </div>
+  <div class="hero-plate"><img id="heroImg" src="assets/seq/burger/d/f120.jpg" alt="Cheeseburger with fries on a plate, steam rising" fetchpriority="high"><i class="halo"></i></div>
+  <div class="scrollcue"><span>Scroll</span><i></i></div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>Breakfast ✦ Burgers ✦ Charbroiler ✦ Wine, draft beer &amp; cocktails ✦ Catering ✦ Free Wi‑Fi ✦ </span><span>Breakfast ✦ Burgers ✦ Charbroiler ✦ Wine, draft beer &amp; cocktails ✦ Catering ✦ Free Wi‑Fi ✦ </span><span>Breakfast ✦ Burgers ✦ Charbroiler ✦ Wine, draft beer &amp; cocktails ✦ Catering ✦ Free Wi‑Fi ✦ </span></div></div>
+
+<!-- SCENE A: burger build -->
+<section id="build" class="story" data-seq="burger" data-n="120" data-nm="60" data-focus=".5">
+  <div class="stage">
+    <canvas class="cv" aria-hidden="true"></canvas>
+    <div class="vig"></div>
+    <div class="loader"><i></i></div>
+    <div class="copy left">
+      <div class="chap" data-c=".07" data-first="1"><p class="eyebrow"><b>01</b> The build</p><h2 class="cond big">EVERY LAYER<br>ON <em>PURPOSE.</em></h2><p class="lede">Six layers float, then land. Keep scrolling.</p></div>
+      <div class="chap" data-c=".22"><p class="eyebrow"><b>02</b> Bun &amp; patty</p><h2 class="cond">BOTTOM BUN.<br><em>THICK PATTY.</em></h2><p class="lede">Angus beef, seared and stacked on a toasted bun.</p></div>
+      <div class="chap" data-c=".37"><p class="eyebrow"><b>03</b> Cheese</p><h2 class="cond">MELT <em>IT.</em></h2><p class="lede">American &amp; jack, draped to the edges.</p></div>
+      <div class="chap" data-c=".52"><p class="eyebrow"><b>04</b> Fresh</p><h2 class="cond">LETTUCE.<br>TOMATO. <em>CRUNCH.</em></h2></div>
+      <div class="chap" data-c=".68"><p class="eyebrow"><b>05</b> Top bun</p><h2 class="cond">LID <em>ON.</em></h2></div>
+      <div class="chap r" data-c=".83"><p class="eyebrow"><b>06</b> Fries</p><h2 class="cond">STEAK FRIES.<br><em>CURLY FRIES.</em></h2><p class="lede">Served with steak fries, curly fries or potato salad.</p></div>
+      <div class="chap r" data-c=".96" data-last="1"><p class="eyebrow"><b>07</b> Served hot</p><h2 class="script big">Hot off the grill.</h2><a class="btn" href="#menu">Pick your burger</a></div>
+    </div>
+    <ol class="burgerlist" id="blist">
+      <li><b>Classic Hamburger</b><span>Our classic burger</span><i>$15.99</i></li>
+      <li><b>Bubba’s Cheese Burger</b><span>American &amp; jack cheese</span><i>$16.49</i></li>
+      <li><b>Bacon Cheeseburger</b><span>Two strips of bacon, American cheese</span><i>$16.99</i></li>
+      <li><b>Western Burger</b><span>BBQ sauce, onion rings, bacon, American</span><i>$17.29</i></li>
+      <li><b>Good Morning Burger</b><span>Two fried eggs, thick bacon, hashbrowns, cheddar</span><i>$18.59</i></li>
+    </ol>
+    <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- SCENE B: flame -->
+<section id="flame" class="story flame" data-seq="flame" data-n="48" data-nm="24" data-focus=".5">
+  <div class="stage">
+    <canvas class="cv" aria-hidden="true"></canvas>
+    <div class="vig"></div>
+    <div class="loader"><i></i></div>
+    <h2 class="flame-type cond" id="flameType">FLAME-<br>KISSED.</h2>
+    <div class="flame-card" id="flameCard">
+      <p class="eyebrow">The Charbroiler</p>
+      <ul>
+        <li><b>8 oz Vineyard Steak</b><span>special-cut sirloin</span><i>$23.29</i></li>
+        <li><b>12 oz Vineyard Steak</b><span>special-cut sirloin</span><i>$24.99</i></li>
+        <li><b>Steak &amp; Shrimp</b><span>8 oz top sirloin + 4 fried shrimp</span><i>$26.99</i></li>
+        <li><b>Rib Eye</b><span>14 oz Choice, great marbling</span><i>$35.59</i></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE C: cocktails -->
+<section id="bar-sec" class="story bar" data-seq="bloody" data-n="80" data-nm="40" data-focus=".5">
+  <div class="stage">
+    <canvas class="cv" aria-hidden="true"></canvas>
+    <div class="vig"></div>
+    <div class="loader"><i></i></div>
+    <div class="copy left">
+      <div class="chap" data-c=".12" data-first="1"><p class="eyebrow"><b>01</b> Pull up to the bar</p><h2 class="script big">Ice. Then the pour.</h2><p class="lede">Wine, draft beer &amp; cocktails in the Crushed Grape Room.</p></div>
+      <div class="chap" data-c=".45"><p class="eyebrow"><b>02</b> Bloody Mary</p><h2 class="cond">POURED <em>DEEP RED.</em></h2><p class="lede">Bloody Mary — <b class="gold">$10.99</b></p></div>
+      <div class="chap" data-c=".80" data-last="1"><p class="eyebrow"><b>03</b> Garnish</p><h2 class="script big">Garnished to order.</h2><p class="lede">Celery, olives &amp; lemon. Mimosa — <b class="gold">$8.50</b></p></div>
+    </div>
+    <div class="dots"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="sec menu">
+  <div class="wrap">
+    <p class="eyebrow rv">The menu · prices from the restaurant’s site</p>
+    <h2 class="cond huge rv">PICK A <em>SIDE</em> OF THE DAY.</h2>
+    <div class="tabs rv" role="tablist" id="tabs"></div>
+    <div class="mgrid" id="mgrid"></div>
+    <p class="fine rv">Selected items only — full menu at <a href="https://www.thevineyardlemoore.com/menu" target="_blank" rel="noopener">thevineyardlemoore.com/menu</a>. Prices as published on the site when this concept was built; confirm with the restaurant.</p>
+  </div>
+</section>
+
+<section class="sec quotes">
+  <div class="wrap grid2">
+    <blockquote class="rv"><span class="script big">“…we love everything about this great place.”</span><cite>— Allen, guest quote from the restaurant’s site</cite></blockquote>
+    <blockquote class="rv"><p>“A place where you could get a great glass of wine, a juicy steak, a mouth watering sandwich, or an indulgent desert… You have just found it.”</p><cite>— from the restaurant’s home page</cite></blockquote>
+  </div>
+</section>
+
+<section class="sec shared">
+  <div class="wrap">
+    <p class="eyebrow rv">Gather</p>
+    <h2 class="script huge rv">Made to be shared.</h2>
+    <div class="trio">
+      <article class="rv"><h3 class="cond">CRUSHED GRAPE ROOM</h3><p>Private room: 700 sq ft, 40 seated / 50 standing. Meal service required; wine and bar service optional. Reserve in advance.</p></article>
+      <article class="rv"><h3 class="cond">CATERING</h3><p>Limited catering in Lemoore — weddings, anniversaries, parties &amp; special events. Large take-out orders welcome.</p></article>
+      <article class="rv"><h3 class="cond">PATIO &amp; WI‑FI</h3><p>Indoor and patio dining. Free Wi‑Fi. Groups of 25 can reserve the patio — call ahead.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="visit" class="sec visit">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow rv">Visit</p>
+      <h2 class="cond huge rv">COME <em>HUNGRY.</em></h2>
+      <p class="rv addr"><b>The Vineyard</b><br>819 East Bush Street<br>Lemoore, CA 93245<br><a href="tel:+15599241988">559-924-1988</a></p>
+      <a class="btn rv" href="https://www.google.com/maps/search/?api=1&query=819+East+Bush+Street+Lemoore+CA+93245" target="_blank" rel="noopener">Open in Maps</a>
+    </div>
+    <div class="rv hours">
+      <h3>Hours <small>“new expanded business hours”</small></h3>
+      <dl><dt>Monday – Thursday</dt><dd>8 am – 8 pm</dd><dt>Friday</dt><dd>8 am – 9 pm</dd><dt>Saturday</dt><dd>7 am – 9 pm</dd><dt>Sunday</dt><dd>7 am – 8 pm</dd></dl>
+      <p class="fine">Hours as listed on thevineyardlemoore.com; call to confirm.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wordmark big">The Vineyard<small>Lemoore</small></div>
+  <p>819 East Bush Street · Lemoore, CA 93245 · 559-924-1988</p>
+  <p class="fine">Unofficial motion-design concept for TC. Logo: the restaurant’s site uses a script wordmark (no logo file) — recreated here as type; <b>[Sample]</b> mark. Imagery is AI-generated. Menu &amp; hours © The Vineyard Restaurant.</p>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>
