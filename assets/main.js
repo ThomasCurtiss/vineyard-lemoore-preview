@@ -116,10 +116,13 @@ const TABS={
  brunch:['Good Morning Burger','Classic Hamburger','Patty Melt','Cobb Salad','Fiesta Salad','Potato Skins','Wings','Bloody Mary','Mimosa','Long Island Iced Tea'],
  dinner:['Steak & Shrimp','Rib Eye','8 oz Vineyard Steak','12 oz Vineyard Steak','Lemon Herb Chicken','Grilled Salmon','Spaghetti & Meat Balls','Chicken Fried Steak','Meatloaf','Cheese Cake','Ice Cream Sundae','Cinnamon Sugar Chips']
 };
+TABS.drinks=['Bloody Mary','Mimosa','Long Island Iced Tea'];
 const TABOF={};Object.entries(TABS).forEach(([t,a])=>a.forEach(i=>TABOF[i]=t));
 const IMG={'Traditional Eggs Benedict':'benedict',"Farmer's Platter":'platter','Farmers Skillet':'skillet','Chicken Fried Steak & Eggs':'cfs','Country Skillet':'country','Honey Butter Pancakes':'pancakes','French Toast Deluxe':'frenchtoast','Denver Omelet':'omelet','Good Morning Burger':'burger','Classic Hamburger':'burger','Patty Melt':'burger','Cobb Salad':'salad','Fiesta Salad':'salad','Potato Skins':'wings','Wings':'wings','Bloody Mary':'bloody','Mimosa':'mimosa','Long Island Iced Tea':'lit','Steak & Shrimp':'steak','Rib Eye':'steak','8 oz Vineyard Steak':'steak','12 oz Vineyard Steak':'steak','Lemon Herb Chicken':'chicken','Grilled Salmon':'salmon','Spaghetti & Meat Balls':'spaghetti','Chicken Fried Steak':'cfs','Meatloaf':'meatloaf','Cheese Cake':'cheesecake','Ice Cream Sundae':'sundae','Cinnamon Sugar Chips':'sundae'};
 const SEQ={'Traditional Eggs Benedict':'breakfast','Steak & Shrimp':'steak','Rib Eye':'steak','8 oz Vineyard Steak':'steak','12 oz Vineyard Steak':'steak','Bloody Mary':'bloody'};
 const SEQN={breakfast:[96,48],steak:[96,48],bloody:[80,40]};
+// v4: every other dish gets its own build clip sequence (lazy-loaded on popup open)
+Object.keys(IMG).forEach(id=>{if(!SEQ[id]){const k='b_'+IMG[id];SEQ[id]=k;SEQN[k]=[36,24]}});
 const srcset=k=>`assets/img/${k}-m.jpg 560w, assets/img/${k}.jpg 1024w`;
 
 /* ---------- i18n ---------- */
@@ -177,6 +180,16 @@ document.addEventListener('click',e=>{ // scene lists
   const a=e.target.closest('a[data-tab]');if(a){curTab=a.dataset.tab;show(curTab,true)}});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches&&e.target.matches('li[data-mi]'))openModal(e.target.dataset.mi)});
 
+/* ---------- v4 nav: dropdowns + mobile hamburger ---------- */
+(function(){const hd=document.querySelector('.nav'),bg=document.getElementById('burger');
+  const closeAll=ex=>document.querySelectorAll('.dd.open').forEach(d=>{if(d!==ex){d.classList.remove('open');d.querySelector('.ddb').setAttribute('aria-expanded','false')}});
+  document.querySelectorAll('.ddb').forEach(b=>b.addEventListener('click',e=>{const d=b.parentNode;const on=!d.classList.contains('open');closeAll(d);d.classList.toggle('open',on);b.setAttribute('aria-expanded',on)}));
+  bg.addEventListener('click',()=>{const on=!hd.classList.contains('navopen');hd.classList.toggle('navopen',on);bg.setAttribute('aria-expanded',on)});
+  document.querySelectorAll('.ddm a').forEach(a=>a.addEventListener('click',()=>{hd.classList.remove('navopen');bg.setAttribute('aria-expanded','false');closeAll()}));
+  document.addEventListener('click',e=>{if(!e.target.closest('.nav'))closeAll()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();hd.classList.remove('navopen')}});
+})();
+
 /* ---------- Dish modal: "how it's built" ---------- */
 const modal=document.getElementById('modal'),mBase=document.getElementById('mBase'),mImg=document.getElementById('mImg'),mCv=document.getElementById('mCv'),mSteps=document.getElementById('mSteps'),mPic=document.getElementById('mPic');
 let mtl=null,mdraw=null;
@@ -198,7 +211,8 @@ function openModal(id){
   const steps=stepsFor(id,t);mSteps.innerHTML=steps.map((s,i)=>`<li><i>${i+1}</i><span>${s}</span></li>`).join('');
   modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.classList.add('lock');
   document.getElementById('mClose').focus({preventScroll:true});
-  const sk=SEQ[id];if(sk){const mob=isMob(),n=SEQN[sk][mob?1:0];const st=frameStore(sk,mob,n);st.load()}
+  const sk=SEQ[id];if(sk){const mob=isMob(),n=SEQN[sk][mob?1:0];const st=frameStore(sk,mob,n);st.load();
+    if(st.loaded<n*.9&&!st.waiting){st.waiting=true;const t0=Date.now();st.onprog.push(s=>{if(s.loaded>=n*.9&&st.waiting){st.waiting=false;if(openId&&SEQ[openId]===sk&&Date.now()-t0<6000)playModal()}})}}
   playModal();
 }
 function playModal(){
