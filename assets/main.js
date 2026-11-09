@@ -5,6 +5,18 @@ const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
 const sm=x=>{x=clamp(x);return x*x*(3-2*x)};
 gsap.registerPlugin(ScrollTrigger);
 
+/* ---------- Lenis smooth scroll (desktop) + ScrollTrigger sync ---------- */
+let lenis=null;
+if(!reduce){
+  try{
+    lenis=new Lenis({lerp:0.08, smoothWheel:true, syncTouch:false, wheelMultiplier:0.85, touchMultiplier:1});
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t=>{lenis.raf(t*1000)});
+    gsap.ticker.lagSmoothing(0);
+  }catch(e){lenis=null}
+}
+
+
 /* ---------- shared frame store (scene sequences + dish modal) ---------- */
 const STORE={};
 function frameStore(key,mobile,N){
@@ -67,9 +79,16 @@ function Seq(section){
     if(rcol){const o=clamp((p-rAt)/.07);rcol.style.opacity=o.toFixed(3);rcol.style.visibility=o<.01?'hidden':'visible';rcol.style.setProperty('--ty',((1-o)*40).toFixed(1)+'px');rcol.style.pointerEvents=o>.5?'auto':'none';if(o>.5)best=chaps.length}
     dots.forEach((d,i)=>d.classList.toggle('on',i===best));
   }
-  ScrollTrigger.create({trigger:section,start:'top top',end:'bottom bottom',onUpdate:s=>{progress=s.progress}});
+  const chapCs=chaps.map(c=>parseFloat(c.dataset.c)).filter(n=>!isNaN(n));
+  const snapPts=[0, ...chapCs, Math.min(0.92, (chapCs.slice(-1)[0]||0.7)+0.18), 1].filter((v,i,a)=>i===0||v>a[i-1]+0.04);
+  ScrollTrigger.create({
+    trigger:section, start:'top top', end:'bottom bottom',
+    onUpdate:s=>{progress=s.progress},
+    scrub: reduce?false:1.25,
+    snap: reduce?false:{snapTo:snapPts, duration:{min:0.15,max:0.55}, ease:'power1.inOut', delay:0.05}
+  });
   function tick(){
-    if(vis){shown+=(progress-shown)*(reduce?1:.14);if(Math.abs(progress-shown)<.0004)shown=progress;draw(shown);layoutChaps(shown)}
+    if(vis){shown+=(progress-shown)*(reduce?1:(isMob()?.18:.10));if(Math.abs(progress-shown)<.0004)shown=progress;draw(shown);layoutChaps(shown)}
     requestAnimationFrame(tick)
   }
   setTimeout(()=>{if(st.started&&st.loaded===0&&st.failed>0){cv.style.display='none';section.querySelector('.stage').style.background=`#0a2b20 url(assets/seq/${key}/d/f${String(st.N).padStart(3,'0')}.jpg) center/contain no-repeat`}},6000);
@@ -119,7 +138,7 @@ const TABS={
 };
 TABS.drinks=['Bloody Mary','Mimosa','Margarita','Long Island Iced Tea'];
 const TABOF={};Object.entries(TABS).forEach(([t,a])=>a.forEach(i=>TABOF[i]=t));
-const IMG={'Traditional Eggs Benedict':'benedict',"Farmer's Platter":'platter','Farmers Skillet':'skillet','Chicken Fried Steak & Eggs':'cfs','Country Skillet':'country','Honey Butter Pancakes':'pancakes','French Toast Deluxe':'frenchtoast','Denver Omelet':'omelet','Good Morning Burger':'gmburger','Classic Cheeseburger':'burger','Patty Melt':'pattymelt','Cobb Salad':'salad','Fiesta Salad':'salad','Potato Skins':'skins','Wings':'wings2','Bloody Mary':'bloody','Mimosa':'mimosa','Margarita':'margarita','Long Island Iced Tea':'lit','Steak & Shrimp':'steakshrimp2','Rib Eye':'ribeye','8 oz Vineyard Steak':'sirloin2','12 oz Vineyard Steak':'sirloin2','Lemon Herb Chicken':'chicken','Grilled Salmon':'salmon','Spaghetti & Meat Balls':'spaghetti','Chicken Fried Steak':'cfs','Meatloaf':'meatloaf','Cheese Cake':'cheesecake','Ice Cream Sundae':'sundae','Cinnamon Sugar Chips':'sundae'};
+const IMG={'Traditional Eggs Benedict':'benedict',"Farmer's Platter":'platter','Farmers Skillet':'skillet','Chicken Fried Steak & Eggs':'cfs','Country Skillet':'country','Honey Butter Pancakes':'pancakes','French Toast Deluxe':'frenchtoast','Denver Omelet':'omelet','Good Morning Burger':'gmburger','Classic Cheeseburger':'burger','Patty Melt':'pattymelt','Cobb Salad':'salad','Fiesta Salad':'salad','Potato Skins':'skins','Wings':'wings2','Bloody Mary':'bloody','Mimosa':'mimosa','Margarita':'margarita','Long Island Iced Tea':'lit','Steak & Shrimp':'steakshrimp2','Rib Eye':'ribeye3','8 oz Vineyard Steak':'sirloin3','12 oz Vineyard Steak':'sirloin3','Lemon Herb Chicken':'chicken','Grilled Salmon':'salmon','Spaghetti & Meat Balls':'spaghetti','Chicken Fried Steak':'cfs','Meatloaf':'meatloaf','Cheese Cake':'cheesecake','Ice Cream Sundae':'sundae','Cinnamon Sugar Chips':'sundae'};
 const SEQ={'Traditional Eggs Benedict':'breakfast','Bloody Mary':'bloody'};
 const SEQN={breakfast:[96,48],steak:[96,48],bloody:[80,40]};
 // v4: every other dish gets its own build clip sequence (lazy-loaded on popup open)

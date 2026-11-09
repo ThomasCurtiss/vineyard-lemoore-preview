@@ -75,8 +75,8 @@ html[lang="zh-HK"] .hero h1 .cond{font-size:clamp(40px,6vw,92px)}
 .marquee .track{display:inline-block;font-family:var(--cond);font-style:italic;font-size:22px;letter-spacing:.1em;color:var(--gold)}
 
 /* pinned scenes */
-.story{position:relative;height:520vh;background:var(--bg3)}
-.story.bar{height:400vh}
+.story{position:relative;height:900vh;background:var(--bg3)}
+.story.bar{height:700vh}
 .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--stage)}
 .cv{position:absolute;inset:0;width:100%;height:100%}
 .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 60% 50%,transparent 55%,rgba(3,14,9,.7) 100%)}
@@ -234,7 +234,7 @@ sup{font-size:9px;letter-spacing:.06em;color:var(--mute);vertical-align:top}
   .hero-plate{order:-1;max-width:300px;justify-self:center;margin-bottom:10px}
   .hero h1 .cond{font-size:clamp(38px,11.5vw,70px)}
   .scrollcue{display:none}
-  .story{height:440vh}.story.bar{height:330vh}
+  .story{height:760vh}.story.bar{height:560vh}
   .vig,.bar .vig{background:linear-gradient(rgba(3,14,9,0) 45%,rgba(3,14,9,.92) 78%)}
   .copy{left:20px;right:20px;width:auto}
   .chap{top:auto;bottom:8vh;margin-top:0}
@@ -300,3 +300,8 @@ sup{font-size:9px;letter-spacing:.06em;color:var(--mute);vertical-align:top}
 .addon.on{background:var(--gold);color:#07170f}.addon.on b{color:#07170f}
 .madds .fine{font-size:10.5px;opacity:.6;margin:6px 0 0}
 .mov .add_pepper{z-index:1}.mov .add_onmush{z-index:2}.mov .add_shrimp{z-index:3}
+
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
