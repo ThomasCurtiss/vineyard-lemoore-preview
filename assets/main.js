@@ -89,8 +89,8 @@ const RAW=[
  ['Honey Butter Pancakes','Pancakes grilled with honey butter','11.99'],
  ['French Toast Deluxe','4 halves of French toast with three sausage links or three strips of bacon or 1 linguica, and two eggs','15.99'],
  ['Denver Omelet','Diced ham, onions & bell peppers with jack and cheddar cheese','14.99'],
- ['Good Morning Burger','Two fried eggs, thick bacon, hashbrowns, cheddar','18.59'],
- ['Classic Hamburger','Our classic burger — with regular straight fries','15.99'],
+ ['Good Morning Burger','Two fried eggs, thick bacon, hashbrowns & cheddar','18.59'],
+ ['Classic Cheeseburger','Angus beef, American cheese, lettuce, tomato, onion — with regular fries','15.99'],
  ['Patty Melt','Angus beef patty, American & jack, grilled onions on rye','15.49'],
  ['Cobb Salad','Turkey, bacon, tomatoes, cucumber, blue cheese, red onions','15.69'],
  ['Fiesta Salad','Chicken or steak, fire-roasted corn, avocado, chipotle ranch','17.99'],
@@ -98,10 +98,10 @@ const RAW=[
  ['Wings','8 regular or 10 boneless — Cajun, lemon pepper, buffalo, garlic parmesan, BBQ or teriyaki','16.99'],
  ['Bloody Mary','','10.99'],['Mimosa','','8.50'],
  ['Long Island Iced Tea','Bar classic, served tall over ice','11.00',1],
- ['Steak & Shrimp','8 oz top sirloin & 4 deep fried shrimp','26.99'],
+ ['Steak & Shrimp','8 oz top sirloin & 4 deep fried shrimp, baked potato','26.99'],
  ['Rib Eye','14 oz Choice rib eye, great marbling, rice pilaf or potato & vegetable, soup or salad, garlic or corn bread','35.59'],
  ['8 oz Vineyard Steak','8 oz special-cut sirloin, rice pilaf or potato & vegetable, soup or salad, garlic or corn bread','23.29'],['12 oz Vineyard Steak','12 oz special-cut sirloin, rice pilaf or potato & vegetable, soup or salad, garlic or corn bread','24.99'],
- ['Add Shrimp','Skewer of 4 deep fried shrimp','7.99',1],['Sautéed Onions & Mushrooms','Sautéed onions & mushrooms on top','3.99',1],['Peppercorn Sauce','Cracked peppercorn sauce','2.99',1],
+ ['Add Shrimp','4 deep fried shrimp with cocktail sauce','7.99',1],['Sautéed Mushrooms','Garlic butter sautéed mushrooms','3.49',1],['Sautéed Onions','Caramelized sautéed onions','2.99',1],['Peppercorn Sauce','Cracked peppercorn cream sauce','2.99',1],['Baked Potato','Butter & chives','3.99',1],['Loaded Potato','Sour cream, cheddar, bacon & chives','5.99',1],['Margarita','Silver tequila, triple sec, lime — salted rim','11.00',1],
  ['Lemon Herb Chicken','Two seasoned chicken breasts, potato, soup or salad, bread','19.49'],
  ['Grilled Salmon','Seasoned grilled salmon','24.99'],
  ['Spaghetti & Meat Balls','With our award winning sauce & garlic bread','19.99'],
@@ -114,16 +114,17 @@ const RAW=[
 const ITEMS={};RAW.forEach(m=>ITEMS[m[0]]={id:m[0],en:m[0],d:m[1],p:+m[2],sample:!!m[3]});
 const TABS={
  breakfast:['Traditional Eggs Benedict',"Farmer's Platter",'Farmers Skillet','Chicken Fried Steak & Eggs','Country Skillet','Honey Butter Pancakes','French Toast Deluxe','Denver Omelet'],
- brunch:['Good Morning Burger','Classic Hamburger','Patty Melt','Cobb Salad','Fiesta Salad','Potato Skins','Wings','Bloody Mary','Mimosa','Long Island Iced Tea'],
+ brunch:['Good Morning Burger','Classic Cheeseburger','Patty Melt','Cobb Salad','Fiesta Salad','Potato Skins','Wings','Bloody Mary','Mimosa','Margarita','Long Island Iced Tea'],
  dinner:['Steak & Shrimp','Rib Eye','8 oz Vineyard Steak','12 oz Vineyard Steak','Lemon Herb Chicken','Grilled Salmon','Spaghetti & Meat Balls','Chicken Fried Steak','Meatloaf','Cheese Cake','Ice Cream Sundae','Cinnamon Sugar Chips']
 };
-TABS.drinks=['Bloody Mary','Mimosa','Long Island Iced Tea'];
+TABS.drinks=['Bloody Mary','Mimosa','Margarita','Long Island Iced Tea'];
 const TABOF={};Object.entries(TABS).forEach(([t,a])=>a.forEach(i=>TABOF[i]=t));
-const IMG={'Traditional Eggs Benedict':'benedict',"Farmer's Platter":'platter','Farmers Skillet':'skillet','Chicken Fried Steak & Eggs':'cfs','Country Skillet':'country','Honey Butter Pancakes':'pancakes','French Toast Deluxe':'frenchtoast','Denver Omelet':'omelet','Good Morning Burger':'burger','Classic Hamburger':'burger','Patty Melt':'pattymelt','Cobb Salad':'salad','Fiesta Salad':'salad','Potato Skins':'wings','Wings':'wings','Bloody Mary':'bloody','Mimosa':'mimosa','Long Island Iced Tea':'lit','Steak & Shrimp':'steak','Rib Eye':'ribeye','8 oz Vineyard Steak':'sirloin','12 oz Vineyard Steak':'sirloin','Lemon Herb Chicken':'chicken','Grilled Salmon':'salmon','Spaghetti & Meat Balls':'spaghetti','Chicken Fried Steak':'cfs','Meatloaf':'meatloaf','Cheese Cake':'cheesecake','Ice Cream Sundae':'sundae','Cinnamon Sugar Chips':'sundae'};
-const SEQ={'Traditional Eggs Benedict':'breakfast','Steak & Shrimp':'steak','Bloody Mary':'bloody'};
+const IMG={'Traditional Eggs Benedict':'benedict',"Farmer's Platter":'platter','Farmers Skillet':'skillet','Chicken Fried Steak & Eggs':'cfs','Country Skillet':'country','Honey Butter Pancakes':'pancakes','French Toast Deluxe':'frenchtoast','Denver Omelet':'omelet','Good Morning Burger':'gmburger','Classic Cheeseburger':'burger','Patty Melt':'pattymelt','Cobb Salad':'salad','Fiesta Salad':'salad','Potato Skins':'skins','Wings':'wings2','Bloody Mary':'bloody','Mimosa':'mimosa','Margarita':'margarita','Long Island Iced Tea':'lit','Steak & Shrimp':'steakshrimp2','Rib Eye':'ribeye','8 oz Vineyard Steak':'sirloin2','12 oz Vineyard Steak':'sirloin2','Lemon Herb Chicken':'chicken','Grilled Salmon':'salmon','Spaghetti & Meat Balls':'spaghetti','Chicken Fried Steak':'cfs','Meatloaf':'meatloaf','Cheese Cake':'cheesecake','Ice Cream Sundae':'sundae','Cinnamon Sugar Chips':'sundae'};
+const SEQ={'Traditional Eggs Benedict':'breakfast','Bloody Mary':'bloody'};
 const SEQN={breakfast:[96,48],steak:[96,48],bloody:[80,40]};
 // v4: every other dish gets its own build clip sequence (lazy-loaded on popup open)
 Object.keys(IMG).forEach(id=>{if(!SEQ[id]){const k='b_'+IMG[id];SEQ[id]=k;SEQN[k]=[36,24]}});
+['b_margarita','a_mush','a_onion','a_pepper','a_shrimp','a_bake','a_loaded'].forEach(k=>{SEQN[k]=[24,16]});
 const srcset=k=>`assets/img/${k}-m.jpg 560w, assets/img/${k}.jpg 1024w`;
 
 /* ---------- i18n ---------- */
@@ -192,29 +193,87 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches&&e.
 })();
 
 /* ---------- v5 steak add-ons ([Sample] prices; layered GSAP overlays) ---------- */
-const ADDONS=[['Add Shrimp','add_shrimp'],['Sautéed Onions & Mushrooms','add_onmush'],['Peppercorn Sauce','add_pepper']];
+const ADDONS=[
+  ['Add Shrimp','a_shrimp'],
+  ['Sautéed Mushrooms','a_mush'],
+  ['Sautéed Onions','a_onion'],
+  ['Peppercorn Sauce','a_pepper'],
+  ['Baked Potato','a_bake'],
+  ['Loaded Potato','a_loaded']
+];
 const STEAKS=['Steak & Shrimp','Rib Eye','8 oz Vineyard Steak','12 oz Vineyard Steak'];
-// overlay placement per plate image: [left%,top%,width%,rot]
-const APOS={steak:{add_shrimp:[64,52,15,-25],add_onmush:[22,30,32,0],add_pepper:[20,34,34,0]},
- ribeye:{add_shrimp:[12,24,13,-62],add_onmush:[18,40,32,0],add_pepper:[16,44,34,0]},
- sirloin:{add_shrimp:[70,58,12,30],add_onmush:[36,44,32,0],add_pepper:[34,48,34,0]}};
-let addSel={};
-function addonUI(id){const box=document.getElementById('mAdds'),ov=document.getElementById('mOv');ov.innerHTML='';addSel={};
-  if(!STEAKS.includes(id)){box.hidden=true;return}box.hidden=false;
-  document.getElementById('mAddBtns').innerHTML=ADDONS.filter(([a])=>!(id==='Steak & Shrimp'&&a==='Add Shrimp')).map(([a,k])=>`<button type="button" class="addon" data-a="${a}" data-k="${k}" aria-pressed="false">+ ${mi(a).n} <b>${money(ITEMS[a].p)}</b></button>`).join('');
+const POTATO_PAIR=['Baked Potato','Loaded Potato'];
+let addSel={}, lastAddonKey=null;
+function addonUI(id){
+  const box=document.getElementById('mAdds'),ov=document.getElementById('mOv');
+  if(ov)ov.innerHTML='';addSel={};lastAddonKey=null;
+  if(!STEAKS.includes(id)){box.hidden=true;return}
+  box.hidden=false;
+  document.getElementById('mAddBtns').innerHTML=ADDONS
+    .filter(([a])=>!(id==='Steak & Shrimp'&&a==='Add Shrimp'))
+    .map(([a,k])=>`<button type="button" class="addon" data-a="${a}" data-k="${k}" aria-pressed="false">+ ${mi(a).n} <b>${money(ITEMS[a].p)}</b></button>`).join('');
 }
-function addonFx(k,on){const ov=document.getElementById('mOv'),pos=(APOS[IMG[openId]]||APOS.steak)[k];let el=ov.querySelector('.'+k);
-  if(!on){if(el)gsap.to(el,{opacity:0,y:-30,duration:.35,onComplete:()=>el.remove()});return}
-  el=document.createElement('img');el.className=k;el.src='assets/img/'+k+'.webp';el.alt='';
-  el.style.cssText=`left:${pos[0]}%;top:${pos[1]}%;width:${pos[2]}%;--rot:${pos[3]}deg`;ov.appendChild(el);
-  if(reduce){gsap.set(el,{opacity:1,rotate:pos[3]});return}
-  if(k==='add_pepper')gsap.fromTo(el,{opacity:0,scale:.2,rotate:pos[3]},{opacity:.93,scale:1,duration:1.1,ease:'power2.out'});
-  else if(k==='add_onmush')gsap.fromTo(el,{opacity:0,y:-140,scale:1.25,rotate:-20},{opacity:1,y:0,scale:1,rotate:0,duration:.9,ease:'bounce.out'});
-  else gsap.fromTo(el,{opacity:0,y:-220,x:60,rotate:pos[3]-40},{opacity:1,y:0,x:0,rotate:pos[3],duration:.8,ease:'back.out(1.6)'});
+function playAddonSeq(key){
+  if(!key||!openId)return;lastAddonKey=key;
+  const mob=isMob(),n=SEQN[key]?SEQN[key][mob?1:0]:24;
+  const st=frameStore(key,mob,n);st.load();
+  if(mtl)mtl.kill();
+  mPic.classList.add('seq');mPic.classList.remove('done');
+  const ctx=mCv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),sz=mPic.clientWidth;
+  mCv.width=mCv.height=Math.round(sz*dpr);
+  const drawF=p=>{const f=clamp(p)*(st.N-1);const A=st.get(Math.floor(f)),B=st.get(Math.floor(f)+1),a=f-Math.floor(f);
+    ctx.clearRect(0,0,mCv.width,mCv.height);
+    [[A,1],[B,a]].forEach(([im,al])=>{if(!im||!al)return;const s=Math.min(im.width,im.height),sx=(im.width-s)/2,sy=(im.height-s)/2;ctx.globalAlpha=al;ctx.drawImage(im,sx,sy,s,s,0,0,mCv.width,mCv.height)});ctx.globalAlpha=1};
+  if(st.loaded<st.N*.5){
+    // wait briefly then play; show last available meanwhile
+    const kick=()=>{if(st.loaded>=st.N*.5){st.onprog=st.onprog.filter(f=>f!==kick);run()}};
+    st.onprog.push(kick);setTimeout(()=>{st.onprog=st.onprog.filter(f=>f!==kick);if(lastAddonKey===key)run()},1800);
+  }else run();
+  function run(){
+    if(lastAddonKey!==key||!openId)return;
+    const obj={p:0},dur=reduce?0:1.8;
+    drawF(0);
+    mtl=gsap.timeline();
+    if(reduce){drawF(1);mPic.classList.add('done');return}
+    mtl.to(obj,{p:1,duration:dur,ease:'power1.inOut',onUpdate:()=>drawF(obj.p)});
+    mtl.call(()=>mPic.classList.add('done'));
+  }
 }
-document.addEventListener('click',e=>{const b=e.target.closest('.addon');if(!b||!openId)return;
-  const a=b.dataset.a,on=!addSel[a];addSel[a]=on;b.setAttribute('aria-pressed',on);b.classList.toggle('on',on);addonFx(b.dataset.k,on);
-  if(on)add(a);else if(cart[a]){cart[a]--;if(!cart[a])delete cart[a];save();renderTray()}});
+function showBaseEnd(){
+  const sk=SEQ[openId];if(!sk)return;
+  const mob=isMob(),st=frameStore(sk,mob,SEQN[sk][mob?1:0]);
+  const im=st.get(st.N-1);if(!im)return;
+  mPic.classList.add('seq','done');
+  const ctx=mCv.getContext('2d'),dpr=Math.min(devicePixelRatio||1,2),sz=mPic.clientWidth;
+  mCv.width=mCv.height=Math.round(sz*dpr);
+  const s=Math.min(im.width,im.height),sx=(im.width-s)/2,sy=(im.height-s)/2;
+  ctx.drawImage(im,sx,sy,s,s,0,0,mCv.width,mCv.height);
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.addon');if(!b||!openId)return;
+  const a=b.dataset.a,k=b.dataset.k,on=!addSel[a];
+  // potato pair is mutually exclusive
+  if(on&&POTATO_PAIR.includes(a)){
+    POTATO_PAIR.forEach(o=>{if(o===a||!addSel[o])return;
+      addSel[o]=false;const ob=[...document.querySelectorAll('.addon')].find(x=>x.dataset.a===o);
+      if(ob){ob.setAttribute('aria-pressed','false');ob.classList.remove('on')}
+      if(cart[o]){cart[o]--;if(!cart[o])delete cart[o]}
+    });
+    save();renderTray();
+  }
+  addSel[a]=on;b.setAttribute('aria-pressed',on);b.classList.toggle('on',on);
+  if(on){add(a);playAddonSeq(k)}
+  else{
+    if(cart[a]){cart[a]--;if(!cart[a])delete cart[a];save();renderTray()}
+    const still=Object.entries(addSel).filter(([,v])=>v).map(([n])=>n);
+    if(still.length){
+      const last=still[still.length-1];
+      const kk=(ADDONS.find(x=>x[0]===last)||[])[1];
+      if(kk)playAddonSeq(kk);
+    }else{lastAddonKey=null;showBaseEnd()}
+  }
+});
+
 
 /* ---------- Dish modal: "how it's built" ---------- */
 const modal=document.getElementById('modal'),mBase=document.getElementById('mBase'),mImg=document.getElementById('mImg'),mCv=document.getElementById('mCv'),mSteps=document.getElementById('mSteps'),mPic=document.getElementById('mPic');
@@ -223,6 +282,7 @@ function stepsFor(id,t){
   if(id==='Bloody Mary')return U('md_bm').split('|');
   if(id==='Mimosa')return U('md_mm').split('|');
   if(id==='Long Island Iced Tea')return U('md_li').split('|');
+  if(id==='Margarita')return U('md_mg').split('|');
   let parts=(t.d||'').split(/\s*[,，、;；]\s*/).map(s=>s.trim()).filter(Boolean);
   if(parts.length>6)parts=[...parts.slice(0,5),parts.slice(5).join(', ')];
   return parts.length<3?[U('md_plate'),...parts]:parts;
@@ -270,7 +330,7 @@ function playModal(){
 function closeModal(){if(mtl)mtl.kill();modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.documentElement.classList.remove('lock');openId=null}
 document.getElementById('mClose').onclick=closeModal;
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-document.getElementById('mReplay').onclick=playModal;
+document.getElementById('mReplay').onclick=()=>{lastAddonKey=null;playModal();const still=Object.entries(addSel).filter(([,v])=>v);if(still.length){const a=still[still.length-1][0];const k=(ADDONS.find(x=>x[0]===a)||[])[1];if(k)setTimeout(()=>playAddonSeq(k), reduce?50:2800)}};
 document.getElementById('mAdd').onclick=e=>{if(openId){add(openId);const b=e.currentTarget;b.classList.add('pop');setTimeout(()=>b.classList.remove('pop'),500)}};
 // swipe down to close on mobile
 (function(){let y0=null;const box=modal.querySelector('.mbox');box.addEventListener('touchstart',e=>{y0=box.scrollTop<=0?e.touches[0].clientY:null},{passive:true});box.addEventListener('touchend',e=>{if(y0!=null&&e.changedTouches[0].clientY-y0>110)closeModal();y0=null})})();
